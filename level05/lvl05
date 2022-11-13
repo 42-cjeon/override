@@ -136,29 +136,34 @@ Disassembly of section .text:
  8048447:	57                   	push   %edi
  8048448:	53                   	push   %ebx
  8048449:	83 e4 f0             	and    $0xfffffff0,%esp
- 804844c:	81 ec 90 00 00 00    	sub    $0x90,%esp
+ 804844c:	81 ec 90 00 00 00    	sub    $0x90,%esp # local stack size = 0x90
  8048452:	c7 84 24 8c 00 00 00 	movl   $0x0,0x8c(%esp)
  8048459:	00 00 00 00 
- 804845d:	a1 f0 97 04 08       	mov    0x80497f0,%eax
+ 804845d:	a1 f0 97 04 08       	mov    0x80497f0,%eax # stdin
  8048462:	89 44 24 08          	mov    %eax,0x8(%esp)
  8048466:	c7 44 24 04 64 00 00 	movl   $0x64,0x4(%esp)
  804846d:	00 
  804846e:	8d 44 24 28          	lea    0x28(%esp),%eax
  8048472:	89 04 24             	mov    %eax,(%esp)
- 8048475:	e8 d6 fe ff ff       	call   8048350 <fgets@plt>
- 804847a:	c7 84 24 8c 00 00 00 	movl   $0x0,0x8c(%esp)
+ 8048475:	e8 d6 fe ff ff       	call   8048350 <fgets@plt> # fgets(0x28(%esp), 100, stdin);
+ 804847a:	c7 84 24 8c 00 00 00 	movl   $0x0,0x8c(%esp) # counter ?
  8048481:	00 00 00 00 
- 8048485:	eb 4c                	jmp    80484d3 <main+0x8f>
+ 8048485:	eb 4c                	jmp    80484d3 <LOOP_IF>
+
+LOOP_START:
  8048487:	8d 44 24 28          	lea    0x28(%esp),%eax
  804848b:	03 84 24 8c 00 00 00 	add    0x8c(%esp),%eax
  8048492:	0f b6 00             	movzbl (%eax),%eax
- 8048495:	3c 40                	cmp    $0x40,%al
- 8048497:	7e 32                	jle    80484cb <main+0x87>
+ 8048495:	3c 40                	cmp    $0x40,%al # if buf[i] <= 0x40 then jmp
+ 8048497:	7e 32                	jle    80484cb <LOOP_CONTINUE>
+
  8048499:	8d 44 24 28          	lea    0x28(%esp),%eax
  804849d:	03 84 24 8c 00 00 00 	add    0x8c(%esp),%eax
  80484a4:	0f b6 00             	movzbl (%eax),%eax
- 80484a7:	3c 5a                	cmp    $0x5a,%al
- 80484a9:	7f 20                	jg     80484cb <main+0x87>
+ 80484a7:	3c 5a                	cmp    $0x5a,%al # if buf[i] > 0x5a then jmp
+ 80484a9:	7f 20                	jg     80484cb <LOOP_CONTINUE>
+
+LOOP_XOR_VALUE: # if 0x40 < buf[i] <= 0x5a
  80484ab:	8d 44 24 28          	lea    0x28(%esp),%eax
  80484af:	03 84 24 8c 00 00 00 	add    0x8c(%esp),%eax
  80484b6:	0f b6 00             	movzbl (%eax),%eax
@@ -166,9 +171,13 @@ Disassembly of section .text:
  80484bb:	83 f2 20             	xor    $0x20,%edx
  80484be:	8d 44 24 28          	lea    0x28(%esp),%eax
  80484c2:	03 84 24 8c 00 00 00 	add    0x8c(%esp),%eax
- 80484c9:	88 10                	mov    %dl,(%eax)
+ 80484c9:	88 10                	mov    %dl,(%eax) # buf[i] ^= 0x20
+
+LOOP_CONTINUE:
  80484cb:	83 84 24 8c 00 00 00 	addl   $0x1,0x8c(%esp)
  80484d2:	01 
+
+LOOP_IF:
  80484d3:	8b 9c 24 8c 00 00 00 	mov    0x8c(%esp),%ebx
  80484da:	8d 44 24 28          	lea    0x28(%esp),%eax
  80484de:	c7 44 24 1c ff ff ff 	movl   $0xffffffff,0x1c(%esp)
@@ -182,7 +191,9 @@ Disassembly of section .text:
  80484f7:	f7 d0                	not    %eax
  80484f9:	83 e8 01             	sub    $0x1,%eax
  80484fc:	39 c3                	cmp    %eax,%ebx
- 80484fe:	72 87                	jb     8048487 <main+0x43>
+ 80484fe:	72 87                	jb     8048487 <LOOP_START> while (i < strlen(buf))
+
+LOOP_END:
  8048500:	8d 44 24 28          	lea    0x28(%esp),%eax
  8048504:	89 04 24             	mov    %eax,(%esp)
  8048507:	e8 34 fe ff ff       	call   8048340 <printf@plt>
