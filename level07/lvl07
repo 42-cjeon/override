@@ -155,7 +155,7 @@ Disassembly of section .text:
  80485c2:	c3                   	ret    
  80485c3:	90                   	nop
 
-080485c4 <clear_stdin>:
+080485c4 <clear_stdin>: # getchar(); utill newline
  80485c4:	55                   	push   %ebp
  80485c5:	89 e5                	mov    %esp,%ebp
  80485c7:	83 ec 18             	sub    $0x18,%esp
@@ -230,7 +230,7 @@ Disassembly of section .text:
 NOT_MULTIFUL_OF_THREE:
  804868a:	8b 45 f0             	mov    -0x10(%ebp),%eax
  804868d:	c1 e8 18             	shr    $0x18,%eax
- 8048690:	3d b7 00 00 00       	cmp    $0xb7,%eax # check if number's MSB is 0xb7
+ 8048690:	3d b7 00 00 00       	cmp    $0xb7,%eax # check if MSB is 0xb7
  8048695:	75 2b                	jne    80486c2 <NOT_RESERVED_VALUE>
 
 RESERVED_VALUE:
@@ -241,7 +241,7 @@ RESERVED_VALUE:
  80486af:	c7 04 24 e6 8a 04 08 	movl   $0x8048ae6,(%esp)
  80486b6:	e8 05 fe ff ff       	call   80484c0 <puts@plt>
  80486bb:	b8 01 00 00 00       	mov    $0x1,%eax
- 80486c0:	eb 13                	jmp    80486d5 <END_FLOW:>
+ 80486c0:	eb 13                	jmp    80486d5 <END_FLOW>
 
 NOT_RESERVED_VALUE:
  80486c2:	8b 45 f4             	mov    -0xc(%ebp),%eax
@@ -287,7 +287,7 @@ END_FLOW:
  8048728:	53                   	push   %ebx
  8048729:	83 e4 f0             	and    $0xfffffff0,%esp
  804872c:	81 ec d0 01 00 00    	sub    $0x1d0,%esp
- 8048732:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 8048732:	0x8b 45 0c             	mov    0xc(%ebp),%eax
  8048735:	89 44 24 1c          	mov    %eax,0x1c(%esp)
  8048739:	8b 45 10             	mov    0x10(%ebp),%eax
  804873c:	89 44 24 18          	mov    %eax,0x18(%esp)
