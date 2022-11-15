@@ -254,30 +254,47 @@ Disassembly of section .text:
   4009f0:	55                   	push   %rbp
   4009f1:	48 89 e5             	mov    %rsp,%rbp
   4009f4:	48 81 ec b0 00 00 00 	sub    $0xb0,%rsp
+<<<<<<< HEAD
   4009fb:	89 bd 6c ff ff ff    	mov    %edi,-0x94(%rbp) <argc>
   400a01:	48 89 b5 60 ff ff ff 	mov    %rsi,-0xa0(%rbp) <argv>
+=======
+  4009fb:	89 bd 6c ff ff ff    	mov    %edi,-0x94(%rbp)
+  400a01:	48 89 b5 60 ff ff ff 	mov    %rsi,-0xa0(%rbp)
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400a08:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
   400a0f:	00 00 
   400a11:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
   400a15:	31 c0                	xor    %eax,%eax
   400a17:	c6 45 8f ff          	movb   $0xff,-0x71(%rbp)
+<<<<<<< HEAD
   400a1b:	c7 45 88 ff ff ff ff 	movl   $0xffffffff,-0x78(%rbp) <"./backups/" + argv[1]>
   400a22:	83 bd 6c ff ff ff 02 	cmpl   $0x2,-0x94(%rbp) <argc>
   400a29:	74 1f                	je     400a4a <ARGV_OK>
 
   400a2b:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp) <argv>,%rax
+=======
+  400a1b:	c7 45 88 ff ff ff ff 	movl   $0xffffffff,-0x78(%rbp)
+  400a22:	83 bd 6c ff ff ff 02 	cmpl   $0x2,-0x94(%rbp)
+  400a29:	74 1f                	je     400a4a <main+0x5a>
+  400a2b:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400a32:	48 8b 10             	mov    (%rax),%rdx
   400a35:	b8 57 0d 40 00       	mov    $0x400d57,%eax
   400a3a:	48 89 d6             	mov    %rdx,%rsi
   400a3d:	48 89 c7             	mov    %rax,%rdi
   400a40:	b8 00 00 00 00       	mov    $0x0,%eax
+<<<<<<< HEAD
   400a45:	e8 e6 fc ff ff       	callq  400730 <printf@plt> # "Usage: %s filename\n"
 
 ARGV_OK:
+=======
+  400a45:	e8 e6 fc ff ff       	callq  400730 <printf@plt>
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400a4a:	ba 6b 0d 40 00       	mov    $0x400d6b,%edx
   400a4f:	b8 6d 0d 40 00       	mov    $0x400d6d,%eax
   400a54:	48 89 d6             	mov    %rdx,%rsi
   400a57:	48 89 c7             	mov    %rax,%rdi
+<<<<<<< HEAD
   400a5a:	e8 61 fd ff ff       	callq  4007c0 <fopen@plt> # fopen("./backups/.log", "w");
   400a5f:	48 89 85 78 ff ff ff 	mov    %rax,-0x88(%rbp) <FILE * "./backups/.log">
   400a66:	48 83 bd 78 ff ff ff 	cmpq   $0x0,-0x88(%rbp) <FILE * "./backups/.log">
@@ -285,10 +302,18 @@ ARGV_OK:
   400a6e:	75 21                	jne    400a91 <OPEN_SUCCESS>
 
 OPEN_FAILED:
+=======
+  400a5a:	e8 61 fd ff ff       	callq  4007c0 <fopen@plt>
+  400a5f:	48 89 85 78 ff ff ff 	mov    %rax,-0x88(%rbp)
+  400a66:	48 83 bd 78 ff ff ff 	cmpq   $0x0,-0x88(%rbp)
+  400a6d:	00 
+  400a6e:	75 21                	jne    400a91 <main+0xa1>
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400a70:	b8 7c 0d 40 00       	mov    $0x400d7c,%eax
   400a75:	be 6d 0d 40 00       	mov    $0x400d6d,%esi
   400a7a:	48 89 c7             	mov    %rax,%rdi
   400a7d:	b8 00 00 00 00       	mov    $0x0,%eax
+<<<<<<< HEAD
   400a82:	e8 a9 fc ff ff       	callq  400730 <printf@plt> # "ERROR: Failed to open ./backups/.log\n"
   400a87:	bf 01 00 00 00       	mov    $0x1,%edi
   400a8c:	e8 3f fd ff ff       	callq  4007d0 <exit@plt>
@@ -298,10 +323,20 @@ OPEN_SUCCESS:
   400a98:	48 83 c0 08          	add    $0x8,%rax
   400a9c:	48 8b 10             	mov    (%rax),%rdx
   400a9f:	48 8b 85 78 ff ff ff 	mov    -0x88(%rbp) <FILE * "./backups/.log">,%rax
+=======
+  400a82:	e8 a9 fc ff ff       	callq  400730 <printf@plt>
+  400a87:	bf 01 00 00 00       	mov    $0x1,%edi
+  400a8c:	e8 3f fd ff ff       	callq  4007d0 <exit@plt>
+  400a91:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+  400a98:	48 83 c0 08          	add    $0x8,%rax
+  400a9c:	48 8b 10             	mov    (%rax),%rdx
+  400a9f:	48 8b 85 78 ff ff ff 	mov    -0x88(%rbp),%rax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400aa6:	be 96 0d 40 00       	mov    $0x400d96,%esi
   400aab:	48 89 c7             	mov    %rax,%rdi
   400aae:	e8 11 fe ff ff       	callq  4008c4 <log_wrapper>
   400ab3:	ba a9 0d 40 00       	mov    $0x400da9,%edx
+<<<<<<< HEAD
   400ab8:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp) <argv>,%rax
   400abf:	48 83 c0 08          	add    $0x8,%rax
   400ac3:	48 8b 00             	mov    (%rax),%rax
@@ -313,18 +348,37 @@ OPEN_SUCCESS:
   400ada:	75 2d                	jne    400b09 <TARGET_OPEN_SUCCESS>
 
   400adc:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp) <argv>,%rax
+=======
+  400ab8:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+  400abf:	48 83 c0 08          	add    $0x8,%rax
+  400ac3:	48 8b 00             	mov    (%rax),%rax
+  400ac6:	48 89 d6             	mov    %rdx,%rsi
+  400ac9:	48 89 c7             	mov    %rax,%rdi
+  400acc:	e8 ef fc ff ff       	callq  4007c0 <fopen@plt>
+  400ad1:	48 89 45 80          	mov    %rax,-0x80(%rbp)
+  400ad5:	48 83 7d 80 00       	cmpq   $0x0,-0x80(%rbp)
+  400ada:	75 2d                	jne    400b09 <main+0x119>
+  400adc:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400ae3:	48 83 c0 08          	add    $0x8,%rax
   400ae7:	48 8b 10             	mov    (%rax),%rdx
   400aea:	b8 7c 0d 40 00       	mov    $0x400d7c,%eax
   400aef:	48 89 d6             	mov    %rdx,%rsi
   400af2:	48 89 c7             	mov    %rax,%rdi
   400af5:	b8 00 00 00 00       	mov    $0x0,%eax
+<<<<<<< HEAD
   400afa:	e8 31 fc ff ff       	callq  400730 <printf@plt> # "ERROR: Failed to open %s\n", argv[1]
   400aff:	bf 01 00 00 00       	mov    $0x1,%edi
   400b04:	e8 c7 fc ff ff       	callq  4007d0 <exit@plt>
 
 TARGET_OPEN_SUCCESS:
   400b09:	ba ab 0d 40 00       	mov    $0x400dab,%edx # "./backups/"
+=======
+  400afa:	e8 31 fc ff ff       	callq  400730 <printf@plt>
+  400aff:	bf 01 00 00 00       	mov    $0x1,%edi
+  400b04:	e8 c7 fc ff ff       	callq  4007d0 <exit@plt>
+  400b09:	ba ab 0d 40 00       	mov    $0x400dab,%edx
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400b0e:	48 8d 45 90          	lea    -0x70(%rbp),%rax
   400b12:	48 8b 0a             	mov    (%rdx),%rcx
   400b15:	48 89 08             	mov    %rcx,(%rax)
@@ -333,11 +387,19 @@ TARGET_OPEN_SUCCESS:
   400b20:	0f b6 52 0a          	movzbl 0xa(%rdx),%edx
   400b24:	88 50 0a             	mov    %dl,0xa(%rax)
   400b27:	48 8d 45 90          	lea    -0x70(%rbp),%rax
+<<<<<<< HEAD
   400b2b:	48 c7 85 58 ff ff ff 	movq   $0xffffffffffffffff,-0xa8(%rbp) <counter>
   400b32:	ff ff ff ff 
   400b36:	48 89 c2             	mov    %rax,%rdx
   400b39:	b8 00 00 00 00       	mov    $0x0,%eax
   400b3e:	48 8b 8d 58 ff ff ff 	mov    -0xa8(%rbp) <counter>,%rcx
+=======
+  400b2b:	48 c7 85 58 ff ff ff 	movq   $0xffffffffffffffff,-0xa8(%rbp)
+  400b32:	ff ff ff ff 
+  400b36:	48 89 c2             	mov    %rax,%rdx
+  400b39:	b8 00 00 00 00       	mov    $0x0,%eax
+  400b3e:	48 8b 8d 58 ff ff ff 	mov    -0xa8(%rbp),%rcx
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400b45:	48 89 d7             	mov    %rdx,%rdi
   400b48:	f2 ae                	repnz scas %es:(%rdi),%al
   400b4a:	48 89 c8             	mov    %rcx,%rax
@@ -347,7 +409,11 @@ TARGET_OPEN_SUCCESS:
   400b59:	48 89 c1             	mov    %rax,%rcx
   400b5c:	48 29 d1             	sub    %rdx,%rcx
   400b5f:	48 89 ca             	mov    %rcx,%rdx
+<<<<<<< HEAD
   400b62:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp) <argv>,%rax
+=======
+  400b62:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400b69:	48 83 c0 08          	add    $0x8,%rax
   400b6d:	48 8b 00             	mov    (%rax),%rax
   400b70:	48 89 c1             	mov    %rax,%rcx
@@ -360,6 +426,7 @@ TARGET_OPEN_SUCCESS:
   400b8b:	be c1 00 00 00       	mov    $0xc1,%esi
   400b90:	48 89 c7             	mov    %rax,%rdi
   400b93:	b8 00 00 00 00       	mov    $0x0,%eax
+<<<<<<< HEAD
   400b98:	e8 13 fc ff ff       	callq  4007b0 <open@plt> # open("./backups/" + argv[1], 0xc1, 0x1b0)
   400b9d:	89 45 88             	mov    %eax,-0x78(%rbp) <"./backups/" + argv[1]>
   400ba0:	83 7d 88 00          	cmpl   $0x0,-0x78(%rbp) <"./backups/" + argv[1]>
@@ -367,12 +434,20 @@ TARGET_OPEN_SUCCESS:
 
 BACKUP_OPEN_FAILED:
   400ba6:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp) <argv>,%rax
+=======
+  400b98:	e8 13 fc ff ff       	callq  4007b0 <open@plt>
+  400b9d:	89 45 88             	mov    %eax,-0x78(%rbp)
+  400ba0:	83 7d 88 00          	cmpl   $0x0,-0x78(%rbp)
+  400ba4:	79 47                	jns    400bed <main+0x1fd>
+  400ba6:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400bad:	48 83 c0 08          	add    $0x8,%rax
   400bb1:	48 8b 10             	mov    (%rax),%rdx
   400bb4:	b8 b6 0d 40 00       	mov    $0x400db6,%eax
   400bb9:	be ab 0d 40 00       	mov    $0x400dab,%esi
   400bbe:	48 89 c7             	mov    %rax,%rdi
   400bc1:	b8 00 00 00 00       	mov    $0x0,%eax
+<<<<<<< HEAD
   400bc6:	e8 65 fb ff ff       	callq  400730 <printf@plt> # "ERROR: Failed to open %s%s\n", "./backups/"
   400bcb:	bf 01 00 00 00       	mov    $0x1,%edi
   400bd0:	e8 fb fb ff ff       	callq  4007d0 <exit@plt>
@@ -380,10 +455,18 @@ BACKUP_OPEN_FAILED:
 NOT_EOF:
   400bd5:	48 8d 4d 8f          	lea    -0x71(%rbp),%rcx
   400bd9:	8b 45 88             	mov    -0x78(%rbp) <"./backups/" + argv[1]>,%eax
+=======
+  400bc6:	e8 65 fb ff ff       	callq  400730 <printf@plt>
+  400bcb:	bf 01 00 00 00       	mov    $0x1,%edi
+  400bd0:	e8 fb fb ff ff       	callq  4007d0 <exit@plt>
+  400bd5:	48 8d 4d 8f          	lea    -0x71(%rbp),%rcx
+  400bd9:	8b 45 88             	mov    -0x78(%rbp),%eax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400bdc:	ba 01 00 00 00       	mov    $0x1,%edx
   400be1:	48 89 ce             	mov    %rcx,%rsi
   400be4:	89 c7                	mov    %eax,%edi
   400be6:	e8 15 fb ff ff       	callq  400700 <write@plt>
+<<<<<<< HEAD
   400beb:	eb 01                	jmp    400bee <BACKUP_WRITE_CONTINUE>
 
 BACKUP_OPEN_SUCCESS:
@@ -391,11 +474,17 @@ BACKUP_OPEN_SUCCESS:
 
 BACKUP_WRITE_CONTINUE:
   400bee:	48 8b 45 80          	mov    -0x80(%rbp) <FILE * argv[1],%rax>
+=======
+  400beb:	eb 01                	jmp    400bee <main+0x1fe>
+  400bed:	90                   	nop
+  400bee:	48 8b 45 80          	mov    -0x80(%rbp),%rax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400bf2:	48 89 c7             	mov    %rax,%rdi
   400bf5:	e8 66 fb ff ff       	callq  400760 <fgetc@plt>
   400bfa:	88 45 8f             	mov    %al,-0x71(%rbp)
   400bfd:	0f b6 45 8f          	movzbl -0x71(%rbp),%eax
   400c01:	3c ff                	cmp    $0xff,%al
+<<<<<<< HEAD
   400c03:	75 d0                	jne    400bd5 <NOT_EOF>
 
   400c05:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp) <argv>,%rax
@@ -409,10 +498,25 @@ BACKUP_WRITE_CONTINUE:
   400c2b:	48 89 c7             	mov    %rax,%rdi
   400c2e:	e8 dd fa ff ff       	callq  400710 <fclose@plt>
   400c33:	8b 45 88             	mov    -0x78(%rbp) <"./backups/" + argv[1]>,%eax
+=======
+  400c03:	75 d0                	jne    400bd5 <main+0x1e5>
+  400c05:	48 8b 85 60 ff ff ff 	mov    -0xa0(%rbp),%rax
+  400c0c:	48 83 c0 08          	add    $0x8,%rax
+  400c10:	48 8b 10             	mov    (%rax),%rdx
+  400c13:	48 8b 85 78 ff ff ff 	mov    -0x88(%rbp),%rax
+  400c1a:	be d2 0d 40 00       	mov    $0x400dd2,%esi
+  400c1f:	48 89 c7             	mov    %rax,%rdi
+  400c22:	e8 9d fc ff ff       	callq  4008c4 <log_wrapper>
+  400c27:	48 8b 45 80          	mov    -0x80(%rbp),%rax
+  400c2b:	48 89 c7             	mov    %rax,%rdi
+  400c2e:	e8 dd fa ff ff       	callq  400710 <fclose@plt>
+  400c33:	8b 45 88             	mov    -0x78(%rbp),%eax
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400c36:	89 c7                	mov    %eax,%edi
   400c38:	e8 33 fb ff ff       	callq  400770 <close@plt>
   400c3d:	b8 00 00 00 00       	mov    $0x0,%eax
   400c42:	48 8b 7d f8          	mov    -0x8(%rbp),%rdi
+<<<<<<< HEAD
   400c46:	64 48 33 3c 25 28 00 	xor    %fs:0x28,%rdi # canary?
   400c4d:	00 00 
   400c4f:	74 05                	je     400c56 <END_FLOW>
@@ -420,6 +524,12 @@ BACKUP_WRITE_CONTINUE:
   400c51:	e8 ca fa ff ff       	callq  400720 <__stack_chk_fail@plt>
 
 END_FLOW:
+=======
+  400c46:	64 48 33 3c 25 28 00 	xor    %fs:0x28,%rdi
+  400c4d:	00 00 
+  400c4f:	74 05                	je     400c56 <main+0x266>
+  400c51:	e8 ca fa ff ff       	callq  400720 <__stack_chk_fail@plt>
+>>>>>>> 876ddc39be0c4c655cc36e303765ba4788be73c6
   400c56:	c9                   	leaveq 
   400c57:	c3                   	retq   
   400c58:	90                   	nop
